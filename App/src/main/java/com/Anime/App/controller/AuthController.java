@@ -52,4 +52,5 @@ public class AuthController {
         apiResponse.setTimestamp(LocalDateTime.now());
         return new ResponseEntity<>(apiResponse,HttpStatus.OK);
     }
+
 }
