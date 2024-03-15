@@ -1,20 +1,16 @@
 package com.Anime.App.service;
 
 import com.Anime.App.exception.IdNotFoundException;
-import com.Anime.App.model.Anime;
 import com.Anime.App.model.Genre;
 import com.Anime.App.model.Studio;
-import com.Anime.App.repository.AnimeRepository;
 import com.Anime.App.repository.GenreRepository;
 import com.Anime.App.repository.StudioRepository;
 import com.Anime.App.request.StudioRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,9 +23,6 @@ public class StudioService {
 
     @Autowired
     private GenreRepository genreRepository;
-
-    @Autowired
-    private AnimeRepository animeRepository;
 
     public Studio createStudio(StudioRequest studioRequest) throws ParseException {
         Studio studio=new Studio();
@@ -52,9 +45,7 @@ public class StudioService {
     }
 
     public String deleteStudioById(Long id) {
-        if(studioRepository.findById(id)==null){
-            throw new IdNotFoundException("Id not found");
-        }
+        studioRepository.findById(id).orElseThrow(()->new IdNotFoundException("studio id not found"));
         studioRepository.deleteById(id);
         return "Studio deleted successfully";
     }

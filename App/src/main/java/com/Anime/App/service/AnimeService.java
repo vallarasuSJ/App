@@ -10,13 +10,11 @@ import com.Anime.App.repository.GenreRepository;
 import com.Anime.App.repository.StudioRepository;
 import com.Anime.App.request.AnimeRequest;
 import com.Anime.App.response.AnimeResponse;
-import com.Anime.App.response.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 

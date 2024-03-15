@@ -4,7 +4,6 @@ package com.Anime.App.dto;
 import com.Anime.App.model.Anime;
 import com.Anime.App.response.AnimeResponse;
 import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 

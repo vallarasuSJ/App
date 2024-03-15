@@ -1,6 +1,5 @@
 package com.Anime.App.controller;
 
-import com.Anime.App.model.Anime;
 import com.Anime.App.model.Studio;
 import com.Anime.App.request.StudioRequest;
 import com.Anime.App.service.StudioService;
