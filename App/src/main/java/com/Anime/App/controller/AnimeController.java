@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -26,15 +27,21 @@ public class AnimeController {
 
 
     @PostMapping("/admin/anime")
-    public ResponseEntity<Anime> createAnime(@RequestBody AnimeRequest animeRequest) throws ParseException {
+    public ResponseEntity<ApiResponse> createAnime(@RequestBody AnimeRequest animeRequest) throws ParseException {
         Anime anime=animeService.createAnime(animeRequest);
-        return new ResponseEntity<>(anime, HttpStatus.OK);
+        apiResponse.setData(anime);
+        apiResponse.setStatus(HttpStatus.OK.value());
+        apiResponse.setTimestamp(LocalDateTime.now());
+        return new ResponseEntity<>(apiResponse, HttpStatus.OK);
     }
 
     @PutMapping("/admin/anime")
-    public ResponseEntity<Anime> updateAnime(@RequestBody AnimeRequest animeRequest) throws ParseException {
+    public ResponseEntity<ApiResponse> updateAnime(@RequestBody AnimeRequest animeRequest) throws ParseException {
         Anime anime=animeService.updateAnime(animeRequest);
-        return new ResponseEntity<>(anime,HttpStatus.OK);
+        apiResponse.setData(anime);
+        apiResponse.setStatus(HttpStatus.OK.value());
+        apiResponse.setTimestamp(LocalDateTime.now());
+        return new ResponseEntity<>(apiResponse,HttpStatus.OK);
 
 
     }
